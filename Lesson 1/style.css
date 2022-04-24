@@ -1,0 +1,58 @@
+table,
+th,
+td {
+  border: 1px solid gray;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+#mytable {
+  color: yellow;
+}
+
+.mytable_class {
+  background: rgb(0, 81, 255);
+}
+
+/* ul.info li {
+  list-style: none;
+} */
+
+ul.info > li {
+  list-style: none;
+}
+
+ul.info > li li:nth-child(2) {
+  list-style: none;
+}
+
+ol li a {
+  text-decoration: none;
+}
+
+ol li a[target="_blank"] {
+  color: red;
+}
+
+ol li a[href="https://google.com"]
+{
+  color: black;
+}
+
+ol li a[href*="google"] {
+  color: pink;
+}
+
+ol li a[href^="http"] {
+  color: purple;
+}
+/* ^是头部的意思，所以有头长得一样才行 */
+
+ol li a[href$=".com.au"] {
+  background-color: aqua;
+}
+/* $是尾部的意思 */
+
+ol li a[href*="google"][href$=".com"] {
+  background: rgb(231, 21, 21);
+}
