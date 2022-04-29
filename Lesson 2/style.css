@@ -48,12 +48,13 @@ div.block2 {
   width: 500px;
   height: 500px;
   background: red;
-  border: 3px solid black;
+  border: 10px solid black;
   border-radius: 10px;
+  position: relative;
 }
 div.block2_sub {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border: 1px dashed gold;
 }
 div.block2_sub:nth-child(1) {
@@ -64,6 +65,8 @@ div.block2_sub:nth-child(1) {
 div.block2_sub:nth-child(2) {
   background: blue;
   position: absolute;
+  left: 30px;
+  top: 50px;
 } 
 div.block2_sub:nth-child(3) {
   background: purple;
