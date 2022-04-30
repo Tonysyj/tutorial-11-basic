@@ -116,9 +116,11 @@ div.block5 {
   position: relative;
   overflow: hidden;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   flex-flow: wrap;
-  align-content: flex-start;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 
 div.block5_sub {
@@ -126,4 +128,17 @@ div.block5_sub {
   height: 100px;
   background: green;
   border: 1px solid gold;
+  /* flex-grow: 1;
+  flex-shrink: 1; */
 }
+
+/* div.block5_sub:nth-child(3) {
+  flex-grow: 3;
+}
+div.block5_sub:nth-child(5) {
+  flex-shrink: 5;
+}
+div.block5_sub:nth-child(4) {
+  flex-grow: 2;
+  flex-shrink: 3;
+} */
