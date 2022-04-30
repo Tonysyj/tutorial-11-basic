@@ -116,10 +116,11 @@ div.block5 {
   position: relative;
   overflow: hidden;
   display: flex;
-  flex-direction: row;
-  flex-flow: wrap;
-  align-content: center;
-  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* align-content: center;
+  justify-content: center; */
+  /* place-content: center; */
   align-items: center;
 }
 
@@ -142,3 +143,14 @@ div.block5_sub:nth-child(4) {
   flex-grow: 2;
   flex-shrink: 3;
 } */
+
+div.block5_sub:nth-child(3) {
+  order: -1;
+}
+div.block5_sub:nth-child(4) {
+  order: -1;
+}div.block5_sub:nth-child(5) {
+  order: -1;
+}div.block5_sub:nth-child(6) {
+  order: 2;
+}
