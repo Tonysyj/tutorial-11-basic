@@ -2,6 +2,8 @@ html,
 body {
   margin: 0;
   padding: 0;
+  width: 100vw; /*vw的意思是view width*/
+  height: 100vh; /*vh的意思是view height*/
 }
 /* span.upper {
     font-weight: bold;
@@ -44,13 +46,14 @@ p.pseudo::after {
   top: 100px;
 } */
 
-div.block2 {
+/* div.block2 {
   width: 500px;
   height: 500px;
   background: red;
   border: 10px solid black;
   border-radius: 10px;
   position: relative;
+  z-index: 1;
 }
 div.block2_sub {
   width: 150px;
@@ -61,15 +64,66 @@ div.block2_sub:nth-child(1) {
   background: green;
   position: relative;
   left: 50px;
+  z-index: 2;
 }
 div.block2_sub:nth-child(2) {
   background: blue;
   position: absolute;
   left: 30px;
   top: 50px;
+  z-index: 1;
 } 
 div.block2_sub:nth-child(3) {
   background: purple;
   position: relative;
   top: 30px;
-} 
+  z-index: 0;
+}  */
+
+* {
+  box-sizing: border-box;
+}
+
+/* div.block3 {
+  width: 500px;
+  height: 500px;
+  background: red;
+  border: 3px solid black;
+  border-radius: 10px;
+  position: relative;
+  font-size: 40px;
+  margin: 50px;
+  padding: 30px;
+}
+
+div.block4 {
+  width: 500px;
+  height: 500px;
+  background: red;
+  border: 3px solid black;
+  border-radius: 10px;
+  position: relative;
+  font-size: 40px;
+  margin: 50px;
+} */
+
+div.block5 {
+  width: 90%;
+  height: 90%;
+  background: red;
+  border: 3px solid black;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-flow: wrap;
+  align-content: flex-start;
+}
+
+div.block5_sub {
+  width: 100px;
+  height: 100px;
+  background: green;
+  border: 1px solid gold;
+}
