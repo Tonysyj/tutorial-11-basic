@@ -1,6 +1,3 @@
-from unittest import result
-
-
 person=['Jack', 'Tom', 'Lucy', 'Amy'] 
 print(person)
 person.append('Tony')
