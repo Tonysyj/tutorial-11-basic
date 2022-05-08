@@ -26,10 +26,10 @@
 # print(b[6])
 # print(c[2:7])
 
-from unicodedata import name
+# from unicodedata import name
 
 
-fruits=('apple','banana','orange','grapes')
+# fruits=('apple','banana','orange','grapes')
 # print(fruits)
 # fruits.append('cherry')
 # print(fruits)
@@ -44,13 +44,45 @@ fruits=('apple','banana','orange','grapes')
 # print(fruits)
 # print(len(fruits))
 
-person={'age':23,'name':"Tony"}
-person['height']="176cm"
-print(person)
-print(person['name'])
-print(person['height'])
+# person={'age':23,'name':"Tony"}
+# person['height']="176cm"
+# print(person)
+# print(person['name'])
+# print(person['height'])
 # del person['name']
 # print(person)
-result=person.pop('age')
-print(person)
+# result=person.pop('age')
+# print(person)
+# print(result)
+
+# from unicodedata import name
+
+
+# print(3>2 and 4<2)
+# print(3>2 or 4<2)
+
+# name="Tony"
+# if name not in ["Tony", "Jack", "Ricky"]:
+#     print("male")
+# print("female")
+
+# x=40
+# if x>0:
+#     x=-5
+#     print("change to negtive number")
+#     print(x)
+
+# i=30
+# while i<35:
+#     print(i)
+#     i += 1
+
+from pyrsistent import b
+
+
+def add(a, b):
+    inner_result=a+b
+    return inner_result
+
+result=add(5,8)
 print(result)
