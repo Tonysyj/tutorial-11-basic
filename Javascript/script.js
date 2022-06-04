@@ -23,7 +23,7 @@
   let b_3 = `he said "he 
   like 'fish'"`;
   console.log(b_3);
-  let b_4 = `he said $(b)`;
+  let b_4 = `he said ${b}`;
   console.log(b_4);
   let b_5 = "he said" + b;
   console.log(b_5);
@@ -231,4 +231,139 @@
 
   console.log(!true); // ! 就是取反的意思
   console.log(!2); // 2的取反结果为False，是因为2本身存在，但是取反之后会变成undefined。undefined会显示False
+}
+
+// 第二节课
+{
+  const roles = ["student", "teacher", "boss"];
+  let role = roles[1];
+
+  // if (role === "student") {
+  //   console.log("hello!");
+  // } else if (role === "teacher") {
+  //   console.log("hi");
+  // } else if (role === "boss") {
+  //   console.log("??");
+  // } else {
+  //   console.log("...");
+  // }  这种写法比较麻烦，而且会有概率出现不小心打错字影响最终结果的情况，推荐用下面的写法
+
+  if (role === roles[0]) {
+    console.log("hello!");
+  } else if (role === roles[1]) {
+    console.log("hi");
+  } else if (role === roles[2]) {
+    console.log("??");
+  } else {
+    console.log("...");
+  }
+
+  switch (role) {
+    case "student":
+      console.log("good morning");
+      break; //如果不使用break截住，系统会直接继续看下面的命令并同时返回所有命令的结果。
+    case roles[1]:
+      console.log("goodbye");
+    // break;
+    case "boss":
+      console.log("yes sir");
+      break;
+    default:
+      console.log("...");
+  } //这种写法和上面的写法是同一个道理，不同点在于if...else可以做复杂判断用，而switch只能做筛选
+}
+
+{
+  let arrayNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  let num = 0;
+  while (num < 9) {
+    arrayNumber[num] += 1;
+    num++;
+  } //while循环一般用的不是很多，主要用的是for循环
+  console.log(arrayNumber);
+
+  let newArrayNumber = [];
+  for (let i = 0; i < 10; i++) {
+    newArrayNumber[i] = i + 5;
+  }
+  console.log(newArrayNumber);
+
+  // forEach循环和for循环的区别
+  newArrayNumber.forEach((num) => {
+    console.log("1:", num);
+  });
+  for (let i = 0; i < newArrayNumber.length; i++) {
+    console.log("2:", newArrayNumber[i]);
+  }
+  /*forEach像一个迭代器，一个一个元素往外吐。
+for是每次i都不一样导致的数字不一样，相当于每次就是一个新的i*/
+
+  let add_arrayNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  let cum = 0;
+  for (let i = 0; i < add_arrayNumber.length; i++) {
+    cum += add_arrayNumber[i];
+  }
+  console.log(cum);
+
+  let sum = 0;
+  add_arrayNumber.forEach((num) => {
+    sum += num;
+  });
+  console.log(sum);
+
+  let str = "";
+  for (let i = 1; i < 10; i++) {
+    for (let j = 1; j <= i; j++) {
+      str += `${i}*${j}=${i * j} `;
+      if (i === j) {
+        str += "\n";
+      }
+    }
+  }
+  console.log(str);
+}
+
+{
+  function func1() {
+    console.log("Hello World");
+  } //此处为定义function，所以不会打印出结果
+  func1(); //此处调用了被定义的function，所以打印出了结果
+
+  function func2(info) {
+    console.log(`${info} juice`);
+  }
+  func2("Orange");
+  func2("Apple");
+  //function的作用就是把功能打包好放着，等待被调用
+
+  function func3(a, b) {
+    console.log(a + b);
+  }
+  func3(1, 2);
+
+  function func4(array) {
+    let cum = 0;
+    array.forEach((num) => {
+      cum += num;
+    });
+    console.log(cum);
+  }
+  func4([1, 2, 5, 18, 100, 6]);
+
+  function func4_1(a, b, ...rest) {
+    let cum = a + b;
+    rest.forEach((num) => {
+      cum += num;
+    });
+    console.log(cum);
+  }
+  func4_1(1, 3, 5, 6, 7, 10, 18);
+
+  function func5(a, b) {
+    console.log("hello");
+    return a + b; //return了之后函数就会停，return之后的东西就不会再起作用
+    console.log("haha");
+  }
+  let cum = func5(1, 2);
+  console.log(cum);
 }
