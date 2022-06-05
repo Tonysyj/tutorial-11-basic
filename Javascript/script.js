@@ -1,3 +1,5 @@
+"use strict";
+
 {
   console.log("hello world");
   let my_name = "Tony";
@@ -128,7 +130,7 @@
   array[100] = 91;
   console.log(array[100]);
   console.log(array.length);
-  array[100].name = "Yuejun"; //无法赋予
+  // array[100].name = "Yuejun"; //无法赋予
   console.log(array[100].name);
   array[101] = { name: "Yuejun" };
   console.log(array[101]);
