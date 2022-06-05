@@ -368,4 +368,32 @@ for是每次i都不一样导致的数字不一样，相当于每次就是一个�
   }
   let cum = func5(1, 2);
   console.log(cum);
+
+  const obj = {
+    name: "Tony",
+    age: 30,
+    gender: "male",
+    height: 178,
+  };
+  function func6(obj) {
+    console.log("name:", obj.name);
+    console.log("age:", obj.age);
+    console.log("gender:", obj.gender);
+    console.log("height:", obj.height);
+    obj.name = "Yuejun";
+    obj.age = 23;
+  }
+  func6(obj);
+  console.log(obj);
+  // function func6(obj)入口仅有一个，但是出口有多个：
+  // 出口1：return，特点是产生新内容，可以不用更改原始数据。
+  // 出口2：复杂结构的传参（如func6），可以获得内容修改。确定是更改了原始的数据。
+  function func7({ name, age, gender }) {
+    name = "Stephen";
+    age = 4;
+    return { name, age, gender };
+  }
+  let newObj = func7(obj); //此处的obj是{name, age, gender}=obj和原始定义的obj并不是一个，但是复制了原始obj的参数。
+  console.log(newObj);
+  console.log(obj);
 }
