@@ -388,6 +388,8 @@ for是每次i都不一样导致的数字不一样，相当于每次就是一个�
   // function func6(obj)入口仅有一个，但是出口有多个：
   // 出口1：return，特点是产生新内容，可以不用更改原始数据。
   // 出口2：复杂结构的传参（如func6），可以获得内容修改。确定是更改了原始的数据。
+  func7(obj); /*func7在没有被定义之前就可以使用，因为这种定义方式是静态定义。
+  当于所有被定义的function都在一张表里，什么时候用都可以。*/
   function func7({ name, age, gender }) {
     name = "Stephen";
     age = 4;
@@ -396,4 +398,118 @@ for是每次i都不一样导致的数字不一样，相当于每次就是一个�
   let newObj = func7(obj); //此处的obj是{name, age, gender}=obj和原始定义的obj并不是一个，但是复制了原始obj的参数。
   console.log(newObj);
   console.log(obj);
+
+  const func8 = function () {
+    console.log("func8");
+  }; //此处func8是通过变量定义的，所以必须在被定义之后了才能使用。否则会报错。
+  func8();
+}
+
+{
+  // 箭头函数
+  const arrow_func1 = () => {
+    console.log("array_func1");
+  }; // arrow function同理上面的func8
+  arrow_func1();
+
+  const arrow_func2 = (a, b) => {
+    console.log(a);
+  };
+  arrow_func2("haha", "heihei");
+
+  const array = [1, 2, 3, 4, 5];
+  array.forEach((num) => {
+    console.log("1:", num);
+  }); //此条代码的本质意思如下：
+  const arrow_func3 = (num) => {
+    console.log("2:", num);
+  };
+  array.forEach(arrow_func3);
+}
+
+{
+  const radius = 1;
+  const location = { x: 1, y: 2 };
+  const isVisible = true;
+  function draw() {
+    console.log("draw");
+  }
+  draw(); //直接调用，没有归属。相对独立，散兵游勇
+
+  const circle1 = {
+    radius: 1,
+    location: {
+      x: 1,
+      y: 2,
+    },
+    isVisible: true,
+    draw1: function () {
+      console.log("draw1");
+    },
+    draw2() {
+      console.log("draw2");
+    },
+  };
+  circle1.draw1();
+  circle1.draw2(); // 都归属于curcle。成帮结伙
+  //用object定义的好处，集合，很清楚这个function是干什么的
+
+  function draw3() {
+    console.log("draw3");
+  }
+  const circle2 = {
+    radius: radius,
+    location: location,
+    isVisible: isVisible,
+    draw: draw3,
+  };
+  circle2.draw();
+
+  function draw4() {
+    console.log("draw4");
+  }
+  const circle3 = {
+    radius,
+    location,
+    isVisible,
+    draw: draw4,
+  };
+  circle3.draw();
+  // circle1是自己往里写值
+  // circle2是把外部的值传进来
+  // circle3当前面的名字和后面的名字一致时，直接写名称就可以了
+}
+
+{
+  //操控节点
+  const content = document.querySelector("div.content");
+  // querySelector只能选择第一个，无法选择多个
+  content.innerHTML = "Hello World!";
+  console.log(content); //这种方法拿到的是节点本身
+
+  const contents = document.querySelectorAll("div.content");
+  console.log(contents); //这种方式以数组的形式拿到所有节点。并且每个节点都是空的。
+  contents.forEach((node, index) => {
+    node.innerHTML = `content ${index}`;
+  });
+  // document.getElementById()
+  // document.getElementsByClassName()
+  // 这两种方法也可以但是都不如querySelector好用，因为querySelector是不管类型的。
+
+  const span = document.createElement("div"); //创造元素
+  span.innerHTML = "<h3>Click Me</h3>";
+  // contents[contents.length - 1].append(span);
+  // contents[contents.length - 1].appendChild(span);
+  // 上面两个是一个意思
+  const domBody = document.querySelector("body");
+  domBody.appendChild(span);
+
+  span.classList.add("active");
+  span.classList.remove("active");
+  span.classList.toggle("active");
+  //toggle是切换，之前是有的时候就变成没有，之前没有就变成有
+  span.setAttribute("style", "cursor:pointer");
+  span.addEventListener("click", () => {
+    span.classList.toggle("active");
+  }); //EventListener逗号前面是做了动作，逗号后面是要做什么事
 }
