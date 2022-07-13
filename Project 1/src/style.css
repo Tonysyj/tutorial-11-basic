@@ -4,6 +4,7 @@
   --background-color: #000;
   --font-color: #fff;
   --overlay-color: #03a9f4;
+  --menu-width: 300px;
 }
 
 html,
@@ -33,6 +34,26 @@ section.showcase {
   z-index: 2;
 }
 
+section.showcase header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px 100px;
+  z-index: 99;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+section.showcase.active {
+  right: var(--menu-width);
+  width: calc(100% - var(--menu-width));
+} /*当showcase和active这两个class同时出现的时候，将执行这条代码。反之则不执行*/
+/* 如果写成section.showcase .active则代表的是showcase或者active出现的时候都执行。
+但是showcase的级别比active的高。 */
+
 div.toggle {
   position: relative;
   width: 60px;
@@ -43,6 +64,10 @@ div.toggle {
   background-position: center;
   cursor: pointer;
   filter: invert(1);
+}
+
+div.toggle.active {
+  background-image: url("image/close.svg");
 }
 
 section.showcase video {
@@ -108,19 +133,6 @@ div.text a:hover {
   font-size: 2rem;
 }
 
-section.showcase header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 40px 100px;
-  z-index: 99;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-transform: uppercase;
-}
-
 ul.social {
   position: absolute;
   bottom: 50px;
@@ -145,8 +157,9 @@ ul.social li a:hover {
   transform: translateY(-10px);
 }
 
-/* div.menu {
-  display: none;
-  background-color: var(--background-color);
-  color: var(--font-color);
-} */
+div.menu {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
