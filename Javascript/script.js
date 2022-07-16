@@ -478,6 +478,30 @@ for是每次i都不一样导致的数字不一样，相当于每次就是一个�
   // circle1是自己往里写值
   // circle2是把外部的值传进来
   // circle3当前面的名字和后面的名字一致时，直接写名称就可以了
+
+  function createCircle(radius) {
+    return {
+      radius,
+      draw1() {
+        console.log("draw1", radius, this.radius);
+        //这里的radius是取function定义的radius的值而不是return的。所以会打印出来4。
+      },
+      draw2: function () {
+        console.log("draw2", radius, this.radius);
+        //使用this.radius则是取return中的值。所以对radius修改的值（2）会被打印出来。
+      },
+      draw3: () => {
+        console.log("draw3", radius);
+        //在return中的箭头函数是无法找到自己的位置的。所以会报错
+      },
+    };
+  }
+  const circle4 = createCircle(4);
+  circle4.radius = 2;
+  console.log(circle4);
+  circle4.draw1();
+  circle4.draw2();
+  circle4.draw3();
 }
 
 {
