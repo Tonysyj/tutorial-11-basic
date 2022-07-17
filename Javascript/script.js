@@ -502,6 +502,22 @@ for是每次i都不一样导致的数字不一样，相当于每次就是一个�
   circle4.draw1();
   circle4.draw2();
   circle4.draw3();
+
+  //构造函数
+  function Circle5(radius) {
+    this.radius = radius;
+    this.draw1 = function () {
+      console.log("draw1", this.radius);
+    };
+    this.draw2 = () => {
+      console.log("draw2", this.radius);
+    };
+  }
+
+  const circle5 = new Circle5(5);
+  console.log(circle5);
+  circle5.draw1();
+  circle5.draw2();
 }
 
 {
