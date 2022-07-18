@@ -518,7 +518,66 @@ for是每次i都不一样导致的数字不一样，相当于每次就是一个�
   console.log(circle5);
   circle5.draw1();
   circle5.draw2();
+  //因为没有作用于的原因，所以箭头函数可以显示出来this.radius
 }
+
+class Car {
+  轮子 = 4;
+  座位 = 6;
+  开车() {}
+  停车() {}
+  加油() {}
+  坐车(num) {
+    num > this.座位 ? console.log("人太多了") : console.log("刚刚好");
+  }
+}
+const car = new Car();
+car.坐车(10);
+
+class CircleClass {
+  radius = undefined;
+  constructor(radius) {
+    this.radius = radius;
+  }
+  draw1() {
+    console.log("draw1", this.radius);
+  }
+  draw2 = function () {
+    console.log("draw2", this.radius);
+  };
+  draw3 = () => {
+    console.log("draw3", this.radius);
+  };
+}
+const circle6 = new CircleClass(6);
+circle6.draw1();
+circle6.draw2();
+circle6.draw3();
+
+class NewClass {
+  static total = 100; //static是静态。静态的东西只能被自己的类所使用
+  brrow() {
+    NewClass.total--;
+    console.log(NewClass.total);
+  }
+  bringBack() {
+    NewClass.total++;
+    console.log(NewClass.total);
+  }
+  static clean() {
+    NewClass.total = 0;
+    console.log(NewClass.total);
+  }
+}
+const newClass1 = new NewClass();
+const newClass2 = new NewClass();
+const newClass3 = new NewClass();
+const newClass4 = new NewClass();
+newClass1.brrow();
+newClass2.bringBack();
+newClass3.brrow();
+newClass4.bringBack();
+NewClass.clean();
 
 {
   //操控节点
