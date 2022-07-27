@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="main-content">
+    <div class="article-details">
+        <div class="article-details__heading-area">
+            <h1>{{post.title}}</h1>
+        </div>
+        <div class="article-details__info-area">
+            <div class="article-details__article-info">
+                <span class="article-details__author">{{post.author}}</span>
+                <span class="article-details__publish-date">
+                    <img class="svg" src="{{ url_for('static', filename='calendar.svg') }}" />
+
+                    {{post.create_Date.date()}}
+                </span>
+            </div>
+            <div class="article-details__social-media">
+                <span>Share post:</span>
+                <a class="facebook" href="https://facebook.com" target="_blank">
+                    <img class="svg" src="{{ url_for('static', filename='facebook.svg') }}">
+                </a>
+                <a class="twitter" href="https://twitter.com" target="_blank">
+                    <img class="svg" src="{{ url_for('static', filename='twitter.svg') }}">
+                </a>
+                <a class="linkedin" href="https://linkedin.com" target="_blank">
+                    <img class="svg" src="{{ url_for('static', filename='linkedin.svg') }}">
+                </a>
+                <a class="instagram" href="https://instagram.com" target="_blank">
+                    <img class="svg" src="{{ url_for('static', filename='instagram.svg') }}">
+                </a>
+            </div>
+        </div>
+        <div class="article-details__content-area">
+            {{post.editordata|safe}}
+        </div>
+        <div class="article-details__extra-operation-area">
+            <a class="article-details__btn btn btn-primary" href="{{ url_for('update_page', id=post.id) }}">Edit
+                Article</a>
+            <a class="article-details__btn btn btn-secondary"
+                href="{{ url_for('delete_page', id=post.id) }}">Delete Article</a>
+        </div>
+    </div>
+    <section class="categorised-articles-container">
+        <div class="categorised-articles-container__articles-card">
+            <h2>Featured recipes</h2>
+            <div class="categorised-articles-container__articles-list">
+                {% if posts|length != 0 %}
+                <!-- Single Article Block -->
+                {% for post in posts  %}
+                {% if post.featured %}
+                <div class="categorised-articles-container__single-article">
+                    <a class="categorised-articles-container__image" href="{{ url_for('article_page', id=post.id) }}">
+                        <img src="{{ url_for('static', filename='profile_pics/'+post.banner_image) }}">
+                    </a>
+                    <div class="categorised-articles-container__article-content">
+                        <a class="categorised-articles-container__article-title"
+                            href="{{ url_for('article_page', id=post.id) }}">{{post.title}}</a>
+                        <span class="categorised-articles-container__article-publisher">by {{post.author}}</span>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                <!-- Single Article Block End -->
+                {% else %}
+                <div>No Post</div>
+                {% endif %}
+
+
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}

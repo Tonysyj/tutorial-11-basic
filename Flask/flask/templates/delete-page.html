@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="main-content main-content__delete">
+    <div class="new-article new-article__delete">
+        <form method="POST">
+            {# This hidden_tag is a CSRF security feature. #}
+            {{ form.hidden_tag() }}
+            <div class="title-wrapper input-wrapper flex-column">
+                {{ form.id.label() }}
+                {{form.id()  }}
+            </div>
+
+            <div class="submit-wrapper flex-column">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
