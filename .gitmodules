@@ -1,0 +1,3 @@
+[submodule "Flask/Flask/static-web-sample"]
+	path = Flask/Flask/static-web-sample
+	url = https://github.com/Ollie-lee/static-web-sample.git
